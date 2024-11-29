@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   w_str.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alermi <alermi@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 20:46:49 by alermi            #+#    #+#             */
-/*   Updated: 2024/11/28 20:48:19 by alermi           ###   ########.tr       */
+/*   Created: 2024/11/29 15:14:21 by alermi            #+#    #+#             */
+/*   Updated: 2024/11/29 15:14:22 by alermi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#include <aoi.h>
-#define FT_PRINTF_H
+#include <unistd.h>
 
-int	ft_printf(const char *format, ...);
-int	w_chr(char c);
-int	w_str(char *str);
-int	w_int(int number);
+int	w_str(char *str)
+{
+	char	*temp;
 
-#endif
+	temp = str;
+	while (*str)
+	{
+		if (write(1, str, 1) == -1)
+			return (-1);
+		str++;
+	}
+	return (temp - str);
+}

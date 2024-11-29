@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   w_strachr.c                                        :+:      :+:    :+:   */
+/*   w_hex_a_pointer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alermi <alermi@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 20:48:31 by alermi            #+#    #+#             */
-/*   Updated: 2024/11/28 20:49:46 by alermi           ###   ########.tr       */
+/*   Created: 2024/11/29 17:40:46 by alermi            #+#    #+#             */
+/*   Updated: 2024/11/29 17:40:48 by alermi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 
-int	w_strachr(char *s)
+#include "printf.h"
+
+int w_hex(unsigned int base)
 {
 
+}
+
+int	w_pointer(size_t adress)
+{
 
 }

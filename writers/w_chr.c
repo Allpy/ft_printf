@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   w_strachr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alermi <alermi@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 20:46:49 by alermi            #+#    #+#             */
-/*   Updated: 2024/11/28 20:48:19 by alermi           ###   ########.tr       */
+/*   Created: 2024/11/28 20:48:31 by alermi            #+#    #+#             */
+/*   Updated: 2024/11/28 20:49:46 by alermi           ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#include <aoi.h>
-#define FT_PRINTF_H
+#include <unistd.h>
 
-int	ft_printf(const char *format, ...);
-int	w_chr(char c);
-int	w_str(char *str);
-int	w_int(int number);
-
-#endif
+int	w_chr(char s)
+{
+	if (write(1, &s, 1) == -1)
+		return (-1);
+	return (1);
+}

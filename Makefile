@@ -4,7 +4,10 @@ CC = cc
 RM = rm -rf
 AR = ar rcs
 
-SRC = ft_printf.c
+SRC = 	ft_printf.c			\
+		./writers/w_str.c	\
+		./writers/w_int.c	\
+		./writers/w_chr.c	\
 
 OBJ = $(SRC:.c=.o)
 
@@ -12,7 +15,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
-	@echo "\033[32m✓ built completed\033[0m"
+	@echo "📁\033[32m✓ built completed\033[0m"
 clean:
 	@$(RM) $(OBJ)
 	@echo "\033[1;33m✓ objects removed\033[0m"

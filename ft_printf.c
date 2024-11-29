@@ -13,16 +13,26 @@
 #include <stdarg.h>
 #include "printf.h"
 
-
-static	int	ft_handle_format(va_list *args, char c)
+static	int	ft_handle_format(va_list args, char c)
 {
 	if (c == 'c')
-		return (w_strachr(va_arg(*args, int)));
+		return (w_chr(va_arg(args, int)));
+	else if (c == 's')
+		return (w_str(va_arg(args, char *)));
+	else if (c == 'i' || c == 'd')
+		return (w_int(va_arg(args, int)));
+	else if (c == 'x' || c == 'X')
+		return (w_hex(va_arg(args, unsigned int)));
+	else if (c == '%')
+	{
+		write (1, "%", 1);
+		return (1);
+	}
 	else
 		return (-1);
 }
 
-static	int	ft_formatselector(va_list *args, const char *format)
+static	int	ft_formatselector(va_list args, const char *format)
 {
 	int	temp;
 	int	len;
@@ -36,14 +46,14 @@ static	int	ft_formatselector(va_list *args, const char *format)
 		{
 			if (format[i + 1] == '\0')
 				return (-1);
-			temp = handle_format(args, format[++i]);
+			temp = ft_handle_format(args, format[++i]);
 			if (temp == -1)
 				return (-1);
 			len += temp;
 		}
 		else
 		{
-			if (ft_putchar(format[i]) == -1)
+			if (w_chr(format[i]) == -1)
 				return (-1);
 			len++;
 		}
@@ -58,7 +68,7 @@ int	ft_printf(const char *format, ...)
 
 	len = 0;
 	va_start(args, format);
-	len = ft_formatselector(&args, format);
+	len = ft_formatselector(args, format);
 	if (len == -1)
 	{
 		va_end(args);
@@ -67,3 +77,9 @@ int	ft_printf(const char *format, ...)
 	return (len);
 }
 
+#include <stdio.h>
+
+int main(void)
+{
+	ft_printf("%i", 12);
+}
